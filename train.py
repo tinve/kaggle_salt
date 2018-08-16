@@ -12,7 +12,7 @@ import torch.backends.cudnn
 
 from models import UNet11, LinkNet34, UNet, UNet16, AlbuNet
 from loss import LossBinary, LossMulti
-from dataset import RoboticsDataset
+from dataset import SaltDataset
 import utils
 
 from prepare_train_val import get_split
@@ -80,7 +80,7 @@ def main():
 
     def make_loader(file_names, shuffle=False, transform=None, problem_type='binary', batch_size=1):
         return DataLoader(
-            dataset=RoboticsDataset(file_names, transform=transform, problem_type=problem_type),
+            dataset=SaltDataset(file_names, transform=transform, problem_type=problem_type),
             shuffle=shuffle,
             num_workers=args.workers,
             batch_size=batch_size,
